@@ -1,6 +1,6 @@
 # Ice-days-of-Lake-Monona
 
-The Downloaded Data is from https://climatology.nelson.wisc.edu/first-order-station-climate-data/madison-climate/lake-ice/history-of-ice-freezing-and-thawing-on-lake-monona/
+Dataset: https://climatology.nelson.wisc.edu/first-order-station-climate-data/madison-climate/lake-ice/history-of-ice-freezing-and-thawing-on-lake-monona/
 
 This code performs linear regression analysis on data extracted from a CSV file to predict the number of frozen days in Lake Monona based on the year
 
