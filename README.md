@@ -1,48 +1,50 @@
-# Ice-days-of-Lake-Monona
+# Frozen Days Prediction Model for Lake Monona
 
 Dataset: https://climatology.nelson.wisc.edu/first-order-station-climate-data/madison-climate/lake-ice/history-of-ice-freezing-and-thawing-on-lake-monona/
 
-This code performs linear regression analysis on data extracted from a CSV file to predict the number of frozen days in Lake Monona based on the year
+This repository contains a Python script that predicts the future freeze behavior of Lake Monona using historical data. The script uses a dataset with information on the annual number of frozen days on Lake Monona, which is analyzed through linear regression to create a predictive model. The model provides insights into the likelihood of Lake Monona freezing in the future and estimates the year when the lake might no longer freeze.
 
-## Data Visualization
-The function visualize_data(filename) reads a CSV file and plots the data:
-- Reading Data: Opens and reads the CSV file, skipping the header.
-- Extracting Points: Extracts the years and the corresponding number of frozen days into two lists (xpoints and ypoints).
-- Plotting: Uses matplotlib to plot the data with appropriate labels for the X and Y axes. The plot is saved as plot.jpg.
-- Return Values: Returns the lists of years and frozen days.
+## Description
+The project consists of two main parts:
 
-## Feature Vector Creation
-The functions create_feature_vector_X(x) and create_feature_vector_Y(y) create feature vectors for the linear regression model:
-- X Vector: create_feature_vector_X creates a feature vector X with a bias term (column of ones) and the year values.
-- Y Vector: create_feature_vector_Y creates a vector Y with the number of frozen days.
+Data Processing: Reads data from a CSV file containing annual frozen days and extracts relevant columns to create a new dataset.
+Data Visualization & Prediction: Visualizes the data as a graph and uses the least-squares method to calculate a linear model to predict future frozen days.
+The script predicts when Lake Monona may no longer freeze based on the historical trend. It also provides insights into the relationship between the year and the number of frozen days, as well as the interpretation of the model.
 
-## Matrix Operations for Linear Regression
-- perform matrix operations required for linear regression analysis
-- matrix_product: computes the matrix product of the transpose of the feature vector for the independent variable and the feature vector itself
-- inverse_matrix_product: calculates the inverse of the resulting matrix
-- pseudo_inverse_X: computes the pseudo-inverse of the feature vector for the independent variable
-- calculate_B(PI,Y): calculates the regression coefficients B using the pseudo-inverse and the target vector Y
+## Getting Started
+### Prerequisites
+Ensure you have Python installed on your system. The code relies on the following Python packages:
+* numpy
+* matplotlib
 
-## Prediction and Interpretation
-Functions for prediction and model interpretation:
-- Prediction: prediction(B) uses the computed coefficients to predict the number of frozen days for the year 2022 and prints the prediction.
-- Model Interpretation: model_interpretation(B1) interprets the sign of the slope 𝐵1 to determine if the likelihood of frozen days is increasing or decreasing.
-- Model Limitation: model_limitation(B) estimates the year when Lake Monona will no longer freeze based on the model.
+You can install the required packages using pip by running:
+```bash
+pip install -r requirements.txt
+```
 
-## Main Method
-- calls the functions in sequence to perform linear regression analysis on the provided data
-- visualizes the data
-- creates feature vectors
-- computes matrix operations
-- calculates the model coefficients
-- makes predictions for the year 2022 and interprets the model.
-- interprets the model results
-- prints the model interpretation and limitation
-- Estimates the model's limitation by predicting the year when Lake Monona will no longer freeze
+### Preparing the Data
+Make sure you downloaded the data in csv format! It should look like this:
+```CSV
+"Category","Annual number of days","Five-year running average"
+"1855-56",118,
+"1856-57",151,
+"1857-58",119,119
+"1858-59",94,121
+"1859-60",111,117
+```
 
-# Summary
-This code provides a comprehensive pipeline for visualizing annual data and performing simple linear regression. It includes:
-- Data extraction and visualization.
-- Feature vector creation.
-- Matrix operations for linear regression.
-- Prediction and model interpretation
+## Features
+### CSV Data Processing
+The script reads a CSV file (chart.csv), processes the data, and creates a new CSV (data.csv) containing two columns:
+* year: The year when the data was collected.
+* days: The number of frozen days in that year.
+
+### Data Visualization
+It generates a plot of frozen days over time using matplotlib, which is saved as plot.jpg. The graph helps visualize trends in the data.
+
+### Linear Regression Model
+Using the least squares method, the script calculates a linear regression model to determine the relationship between the year and the number of frozen days. The model provides:
+* The coefficients B0 (intercept) and B1 (slope).
+* A prediction for the year 2024 based on the model.
+* An interpretation of the model's behavior (positive or negative trend).
+* A limitation on when the lake will no longer freeze based on the calculated coefficients.
